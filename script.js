@@ -3,7 +3,7 @@ function genemtx() {
     const rows = parseInt(document.getElementById('rows').value, 10);
     const columns = parseInt(document.getElementById('columns').value, 10);
     const matrixInputDiv = document.getElementById('mtxinp');
-    
+     document.getElementById('result').innerText = '';
     matrixInputDiv.innerHTML = ''; // Clear previous input fields
     
     if (rows > 0 && columns > 0) {
