@@ -3,7 +3,7 @@ function genemtx() {
     const rows = parseInt(document.getElementById('rows').value, 10);
     const columns = parseInt(document.getElementById('columns').value, 10);
     const matrixInputDiv = document.getElementById('mtxinp');
-     document.getElementById('result').innerText = '';
+    document.getElementById('result').innerText = '';
     matrixInputDiv.innerHTML = ''; // Clear previous input fields
     
     if (rows > 0 && columns > 0) {
@@ -27,12 +27,14 @@ function genemtx() {
         toggleContainers();
     }
 }
+
 // Function to go back to the input container
 function goBack() {
     document.getElementById('matrixContainer').classList.add('hidden');
     document.getElementById('inputContainer').classList.remove('hidden');
     document.getElementById('calc').style.display = 'none'; // Hide calculate button when going back
 }
+
 // Calculate rank
 function calcrank() {
     const rows = parseInt(document.getElementById('rows').value, 10);
@@ -46,12 +48,14 @@ function calcrank() {
     document.getElementById('result').innerText = `Rank of the matrix: ${rank}`;
 }
 
-// Rank calculation logic (remains unchanged)
+// Correct Rank calculation logic using Gaussian elimination
 function calculateMatrixRank(matrix) {
     let rows = matrix.length;
     let columns = matrix[0].length;
+    let rank = columns;
 
-    for (let row = 0; row < rows; row++) {
+    for (let row = 0; row < rank; row++) {
+        // Check if the diagonal element is non-zero
         if (matrix[row][row] !== 0) {
             for (let col = 0; col < rows; col++) {
                 if (col !== row) {
@@ -62,15 +66,25 @@ function calculateMatrixRank(matrix) {
                 }
             }
         } else {
+            // Find a non-zero element in the same column and swap rows
+            let reduce = true;
             for (let i = row + 1; i < rows; i++) {
                 if (matrix[i][row] !== 0) {
                     [matrix[row], matrix[i]] = [matrix[i], matrix[row]];
+                    reduce = false;
                     break;
                 }
             }
+            if (reduce) {
+                rank--;
+                for (let i = 0; i < rows; i++) {
+                    matrix[i][row] = matrix[i][rank];
+                }
+            }
+            row--;
         }
     }
-    return columns;
+    return rank;
 }
 
 // Toggle between input and matrix containers
