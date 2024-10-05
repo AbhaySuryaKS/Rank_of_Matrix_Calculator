@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
+    <title>Matrix Rank Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>Matrix Rank Calculator</header>
+    
+    <div class="container" id="inputContainer">
+        <label>Enter matrix size</label>
+        <input type="number" id="rows" placeholder="Rows" min="1"> X
+        <input type="number" id="columns" placeholder="Columns" min="1">
+        <button onclick="genemtx()">Generate Matrix</button>    
+    </div>
+
+    <div id="matrixContainer" class="hidden">
+        <div id="mtxinp" class="mtxinp"></div>
+        <button id="calc" onclick="calcrank()">Calculate Rank</button>
+        <button id="backButton" onclick="goBack()">Back</button> <!-- New Back button -->
+        <div id="result"></div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
