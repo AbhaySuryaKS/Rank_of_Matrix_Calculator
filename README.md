@@ -34,3 +34,7 @@ You can try the tool [here](#). (If hosting on GitHub Pages or another service, 
 1. Clone this repository to your local machine:
    ```bash
    git clone https://github.com/yourusername/matrix-rank-calculator.git
+## License
+
+This project is open-source and free to use.
+https://codepen.io/codemaster2301/pen/XWvKXJJ
