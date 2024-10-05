@@ -19,10 +19,6 @@ A web-based tool for calculating the rank of a matrix, built using **HTML**, **C
 - **User-Friendly Interface:** Responsive and clean UI with error handling for input fields.
 - **Back Button:** Allows users to modify the matrix size or values.
 
-## Demo
-
-You can try the tool [here](#). (If hosting on GitHub Pages or another service, add a link here.)
-
 ## Technologies
 
 - **HTML5** for structure.
