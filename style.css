@@ -38,17 +38,17 @@ header {
 }
 
 .mtxinp {
-    max-width: 300px;
+    max-width: 95vw;
     max-height: 300px;
     overflow: auto;
 }
 
 input {
-    margin: 10px;
-    padding: 5px;
+    margin: 5px;
+    padding: 2px 10px;
     border-radius: 10px;
     border: none;
-    width: 100px;
+    width: 75px;
 }
 
 button {
@@ -63,11 +63,6 @@ button {
 
 button:hover {
     background-color: #ff7700;
-}
-
-.mtxinp {
-    margin-top: 20px;
-    overflow: auto;
 }
 
 .hidden {
