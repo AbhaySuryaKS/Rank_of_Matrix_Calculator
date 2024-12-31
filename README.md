@@ -29,7 +29,7 @@ A web-based tool for calculating the rank of a matrix, built using **HTML**, **C
 
 1. Clone this repository to your local machine:
    ```bash
-   git clone https://github.com/codemaster2301/matrix-rank-calculator.git
+   git clone https://github.com/AbhaySuryaKS/Rank_of_Matrix_Calculator.git
 ## License
 
 This project is open-source and free to use.
