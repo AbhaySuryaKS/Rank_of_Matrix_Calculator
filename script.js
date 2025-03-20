@@ -50,40 +50,42 @@ function calcrank() {
 
 // Correct Rank calculation logic using Gaussian elimination
 function calculateMatrixRank(matrix) {
-    let rows = matrix.length;
-    let columns = matrix[0].length;
-    let rank = columns;
+    const rows = matrix.length;
+    const columns = matrix[0].length;
+    const tolerance = 1e-10; // Tolerance for treating values as zero
+    let rank = Math.min(rows, columns);
 
     for (let row = 0; row < rank; row++) {
-        // Check if the diagonal element is non-zero
-        if (matrix[row][row] !== 0) {
-            for (let col = 0; col < rows; col++) {
-                if (col !== row) {
-                    const mult = matrix[col][row] / matrix[row][row];
-                    for (let i = 0; i < columns; i++) {
-                        matrix[col][i] -= mult * matrix[row][i];
-                    }
-                }
+        // Partial pivoting: Find the row with the largest absolute value in the current column
+        let maxRow = row;
+        let maxVal = Math.abs(matrix[row][row]);
+        for (let i = row + 1; i < rows; i++) {
+            if (Math.abs(matrix[i][row]) > maxVal) {
+                maxVal = Math.abs(matrix[i][row]);
+                maxRow = i;
             }
-        } else {
-            // Find a non-zero element in the same column and swap rows
-            let reduce = true;
-            for (let i = row + 1; i < rows; i++) {
-                if (matrix[i][row] !== 0) {
-                    [matrix[row], matrix[i]] = [matrix[i], matrix[row]];
-                    reduce = false;
-                    break;
-                }
+        }
+
+        // If the maximum value in the column is below tolerance, reduce the rank
+        if (maxVal < tolerance) {
+            rank--;
+            continue;
+        }
+
+        // Swap the current row with the maxRow (partial pivoting)
+        if (maxRow !== row) {
+            [matrix[row], matrix[maxRow]] = [matrix[maxRow], matrix[row]];
+        }
+
+        // Eliminate all non-zero elements below the pivot
+        for (let i = row + 1; i < rows; i++) {
+            const factor = matrix[i][row] / matrix[row][row];
+            for (let j = row; j < columns; j++) {
+                matrix[i][j] -= factor * matrix[row][j];
             }
-            if (reduce) {
-                rank--;
-                for (let i = 0; i < rows; i++) {
-                    matrix[i][row] = matrix[i][rank];
-                }
-            }
-            row--;
         }
     }
+
     return rank;
 }
 
