@@ -34,3 +34,7 @@ A web-based tool for calculating the rank of a matrix, built using **HTML**, **C
 
 This project is open-source and free to use.
 https://codepen.io/AbhaySuryaKS/pen/XWvKXJJ
+
+## 💡 Credits
+
+Made by [Abhay Surya K S](https://github.com/AbhaySuryaKS/) 
